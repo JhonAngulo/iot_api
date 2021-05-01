@@ -25,7 +25,7 @@ fastify.register(
 
 const start = async () => {
   try {
-    await fastify.listen(app.port)
+    await fastify.listen(app.port, '0.0.0.0')
     if (app.env) console.log(`server listening on http:localhost:${app.port} env ${app.env}`)
   } catch (err) {
     fastify.log.error(err)
