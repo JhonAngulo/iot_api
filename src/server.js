@@ -1,7 +1,7 @@
 'use strict'
 
 const cors = require('fastify-cors')
-// const helmet = require('fastify-helmet')
+const helmet = require('fastify-helmet')
 const { app, logger } = require('../config/appConfig')
 const fastify = require('fastify')({
   logger
@@ -17,11 +17,11 @@ fastify.register(autoLoad, {
   options: { prefix: '/api/v1' }
 })
 
-// fastify.register(
-//   helmet,
-//   // Example disables the `contentSecurityPolicy` middleware but keeps the rest.
-//   { contentSecurityPolicy: false }
-// )
+fastify.register(
+  helmet,
+  // Example disables the `contentSecurityPolicy` middleware but keeps the rest.
+  { contentSecurityPolicy: false }
+)
 
 const start = async () => {
   try {
